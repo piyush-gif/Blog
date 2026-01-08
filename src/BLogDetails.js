@@ -7,10 +7,10 @@ const BlogDetails = () => {
     data: blog,
     error,
     isPending,
-  } = useFetch("http://localhost:8000/blogs/" + id);
+  } = useFetch(process.env.REACT_APP_API_URL + "/blogs/" + id);
   const history = useHistory();
   const handleClick = () => {
-    fetch("http://localhost:8000/blogs/" + blog.id, {
+    fetch(process.env.REACT_APP_API_URL + "/blogs/" + blog.id, {
       method: "DELETE",
     }).then(() => {
       history.push("/");

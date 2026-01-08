@@ -6,7 +6,7 @@ const Home = () => {
     data: blogs,
     isPending,
     error,
-  } = useFetch("http://localhost:8000/blogs");
+  } = useFetch(process.env.REACT_APP_API_URL + "/blogs");
   return (
     <div className="home">
       {error && <div>{error}</div>}
