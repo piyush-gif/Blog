@@ -1,31 +1,66 @@
 # Blog
 
-A minimal React blog demo.
+A simple React blog application with full CRUD functionality.
 
-Prerequisites
+## Prerequisites
 
 - Node.js
+- npm
 
-Install
+## Installation
 
-```
+```bash
 npm install
 ```
 
-Run (development)
+## Development
 
-```
+Start the React dev server:
+
+```bash
 npm start
 ```
 
-Project structure (key files)
+Start the JSON server (in a separate terminal):
 
-- `src/` — React source files (`App.js`, `BlogList.js`, `BlogDetails.js`, `Create.js`)
-- `public/` — static files
-- `data/db.json` — local JSON data
+```bash
+npx json-server --watch data/db.json --port 8000
+```
 
-Notes
+App runs on `http://localhost:3000`
 
-- Open the app in your browser after running `npm start`.
+## Production Deployment
 
-- Using Json server `npx json-server --watch data/db.json --port 8000`
+Build the app:
+
+```bash
+npm run build
+```
+
+Deploy to server:
+
+```bash
+# Copy build files to web server
+sudo cp -r build/* /var/www/html/
+
+# Start JSON server with PM2
+pm2 start npx --name "json-server" -- json-server --watch data/db.json --port 8000 --host 0.0.0.0
+pm2 save
+```
+
+## Project Structure
+
+- `src/` - React components (App.js, BlogList.js, BlogDetails.js, Create.js)
+- `public/` - Static assets
+- `data/db.json` - Blog data storage
+
+## Tech Stack
+
+- React
+- JSON Server (REST API)
+- Nginx (production web server)
+- PM2 (process manager)
+
+## Live Demo
+
+Deployed on Oracle Cloud: `http://79.72.74.40`
